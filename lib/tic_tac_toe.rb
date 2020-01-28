@@ -55,7 +55,7 @@ def position_taken?(index)
   @board[index] != " " && @board[index] != ""
 end
 
- def valid_move?(position)
+ def valid_move?(position, index)
   !position_taken? && position.between?(0,8)
   end
 

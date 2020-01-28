@@ -69,7 +69,7 @@ end
     end
   end
 
-  def play(board)
+  def play#(board)
     loop do 
       counter = counter + 1
       if counter >= 9 
@@ -106,7 +106,7 @@ end
      end 
   end
 
-  def winner(board)
+  def winner#(board)
     if WIN_COMBINATIONS.all? == "X"
       puts "Winner is Player X"
     else 

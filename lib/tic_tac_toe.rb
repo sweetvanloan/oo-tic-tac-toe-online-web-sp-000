@@ -51,26 +51,21 @@ def move(index, player_token = X)
   board[index] = player_token
 end
 
-def position_taken?(index) #so it will be checking index values.
-   index = "" || index != "" #Either the index is wrong or the placement is wrong on the ARRAY fromt he output -1 OR if the posituon takes up space  
-   index  
+def position_taken?(index)
+  @board[index] != " " && @board[index] != ""
 end
 
  def valid_move?(position)
-    if between?(0,8) == false
-    
-    end
+  !position_taken? && position.between?(0,8)
   end
 
-  def turn(board)
+  def turn
     puts "Please enter 1-9:"
     input = gets.strip
     index = input_to_index(input)
     if valid_move?(board, index)
       move(board, index)
       display_board(board)
-    else
-      turn(board)
     end
   end
 
@@ -83,23 +78,12 @@ end
     end
   end
 
-  def turn_count(board)
-    puts (turn_count)
-    counter = 0 
-    while count <= board.length 
-      counter += 1 
-    end
-    if counter >=9
-      puts "End of Game"
-    end
+  def turn_count
+   board.count{|token| token == "X" || token == "O"}
   end 
   
-  def current_player(board)
-    current_player.even?
-    if true
-      current_player = "O"
-    else 
-    end
+  def current_player
+    turn_count % 2 == 0 ? "X" : "O"
   end
   
   def won?(board)
